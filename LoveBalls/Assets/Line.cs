@@ -7,7 +7,7 @@ public class Line : MonoBehaviour {
     public LineRenderer lineRenderer;
     public EdgeCollider2D edgeCol;
 
-    List<Vector2> points;
+ List<Vector2> points;
 
     // Use this for initialization
     void Start() {
