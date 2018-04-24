@@ -18,7 +18,7 @@ public class Line : MonoBehaviour {
 
     }
 
-    public void UpdateLine(Vector2 mousePos)  // 将鼠标位置加入list<Vector2> points
+    public void UpdateLine(Vector2 mousePos) //drawnew line 
     {
         if (points == null)
         {
@@ -32,12 +32,9 @@ public class Line : MonoBehaviour {
             SetPoint(mousePos);
         }
             
-
-        //Check if the mouse has move enough for us to insert new point
-        //if it has: Insert point at mouse position
     }
 
-    void SetPoint(Vector2 point)
+    void SetPoint(Vector2 point) 
     {
         points.Add(point);
         lineRenderer.positionCount = points.Count;
@@ -60,7 +57,6 @@ public class Line : MonoBehaviour {
             totaly += point.y;
         }
         Vector2 centerPoint = new Vector2(totalx / points.Count, totaly / points.Count);
-        print("Center Point is " + centerPoint);
         return centerPoint;
     }
 }
