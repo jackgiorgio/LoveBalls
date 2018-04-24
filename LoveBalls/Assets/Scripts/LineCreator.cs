@@ -5,9 +5,9 @@ using UnityEngine;
 public class LineCreator : MonoBehaviour {
 
     public GameObject linePrefab;
-
-
+    public GameObject lineParent;
     Line activeLine;
+
 
     // Use this for initialization
     void Start () {
@@ -18,14 +18,15 @@ public class LineCreator : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             GameObject lineGo = Instantiate(linePrefab);
-            activeLine = lineGo.GetComponentInChildren<Line>();
+            activeLine = lineGo.GetComponent<Line>();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            Rigidbody2D rb = activeLine.transform.GetComponentInParent<Rigidbody2D>();
-            rb.isKinematic = false;
+            GameObject lineP = Instantiate(lineParent,activeLine.NewCenterOfMass(),Quaternion.identity);
+            activeLine.gameObject.transform.SetParent(lineP.transform);
             activeLine = null;
+
         }
 
         if (activeLine != null)

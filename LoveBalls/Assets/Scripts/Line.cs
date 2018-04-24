@@ -7,7 +7,7 @@ public class Line : MonoBehaviour {
     public LineRenderer lineRenderer;
     public EdgeCollider2D edgeCol;
 
- List<Vector2> points;
+    List<Vector2> points;
 
     // Use this for initialization
     void Start() {
@@ -48,5 +48,19 @@ public class Line : MonoBehaviour {
         {          
             edgeCol.points = points.ToArray();
         }
+    }
+
+    public Vector2 NewCenterOfMass()
+    {
+        float totalx = 0;
+        float totaly = 0;
+        foreach (Vector2 point in points)
+        {
+            totalx += point.x;
+            totaly += point.y;
+        }
+        Vector2 centerPoint = new Vector2(totalx / points.Count, totaly / points.Count);
+        print("Center Point is " + centerPoint);
+        return centerPoint;
     }
 }
