@@ -11,7 +11,6 @@ public class ResultDisplay : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        animator = GetComponent<Animator>();
 
     }
 
@@ -25,6 +24,7 @@ public class ResultDisplay : MonoBehaviour {
         //get screenshot of the gameplay;
         retryButton.SetActive(false);
         NextButton.SetActive(true);
+        animator = GetComponent<Animator>();
         animator.SetTrigger("3Stars");
     }
 
