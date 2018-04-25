@@ -6,14 +6,21 @@ public class LoseCollider : MonoBehaviour {
 
     private LevelManager levelManager;
 
+    private GameManager gameManager;
+
+
     void Start()
     {
-        levelManager = GameObject.FindObjectOfType<LevelManager>();   
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
-    void OnTriggerEnter2D()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        levelManager.LoadLevel("Lose");
+        if (collision.transform.tag == "Female" || collision.transform.tag == "Male")
+        {
+            gameManager.isLose = true;
+        }
     }
 
 }
