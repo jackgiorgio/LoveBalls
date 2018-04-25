@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public bool isLevelPassed = false;
     public bool isLose = false;
     private GameObject winPanel;
+    private ResultDisplay resultDisplay;
     
     // Use this for initialization
 	void Start () {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("LevelPassed!");
             //make everything kinematic;
             winPanel.SetActive(true); // display win panel, which will have a win animation and music play;
+            resultDisplay.DisplayWinPanel();
             isLevelPassed = false;
         }
     }
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("You Lose!");
             winPanel.SetActive(true); // display win panel, which will have a win animation and music play;
+            resultDisplay.DisplayLosePanel();
             isLose = false;
         }
     }
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour {
     void FindWinPanel()
     {
         winPanel = GameObject.Find("WinPanel");
+        resultDisplay = GameObject.FindObjectOfType<ResultDisplay>();
         if (!winPanel)
         {
             Debug.LogError("Please create you win object");
