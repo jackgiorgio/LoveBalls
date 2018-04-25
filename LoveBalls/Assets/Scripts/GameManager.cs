@@ -5,9 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public bool isLevelPassed = false;
+    private GameObject winPanel;
     
     // Use this for initialization
-	void Start () { 
+	void Start () {
+        FindWinPanel();
+        winPanel.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -21,8 +24,17 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("LevelPassed!");
             //make everything kinematic;
-            //winLabel.SetActive(true); display win panel, which will have a win animation and music play;
+            winPanel.SetActive(true); // display win panel, which will have a win animation and music play;
             isLevelPassed = false;
+        }
+    }
+
+    void FindWinPanel()
+    {
+        winPanel = GameObject.Find("WinPanel");
+        if (!winPanel)
+        {
+            Debug.LogError("Please create you win object");
         }
     }
 }
