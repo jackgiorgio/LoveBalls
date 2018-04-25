@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public bool isLevelPassed = false;
+    public bool isLose = false;
     private GameObject winPanel;
     
     // Use this for initialization
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         HandleWinCondition();
+        HandleLoseCondition();
 	}
 
     void HandleWinCondition()
@@ -35,6 +37,17 @@ public class GameManager : MonoBehaviour {
         if (!winPanel)
         {
             Debug.LogError("Please create you win object");
+        }
+    }
+
+    void HandleLoseCondition()
+    {
+        if (isLose)
+        {
+            Debug.Log("You Lose!");
+            //make everything kinematic;
+            winPanel.SetActive(true); // display win panel, which will have a win animation and music play;
+            isLose = false;
         }
     }
 }
