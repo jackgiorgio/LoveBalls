@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class LoseCollider : MonoBehaviour {
 
-    public LevelManager levelManager;
-
-    private GameManager gameManager;
+    private LevelManager levelManager;
 
     void Start()
     {
-        gameManager = GameManager.FindObjectOfType<GameManager>();
+        levelManager = GameObject.FindObjectOfType<LevelManager>();   
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D()
     {
-        if (collision.transform.tag == "Male" || collision.transform.tag == "Female")
-        {
-            gameManager.isLose = true;
-        }
+        levelManager.LoadLevel("Lose");
     }
-
 
 }
