@@ -8,9 +8,12 @@ public class LineCreator : MonoBehaviour {
     public GameObject lineParent;
     Line activeLine;
 
+    private GameManager gameManager;
+
 
     // Use this for initialization
     void Start () {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -26,6 +29,10 @@ public class LineCreator : MonoBehaviour {
             GameObject lineP = Instantiate(lineParent,activeLine.NewCenterOfMass(),Quaternion.identity);
             activeLine.gameObject.transform.SetParent(lineP.transform);
             activeLine = null;
+            if (gameManager.gameStarted == false)
+            {
+                gameManager.SetFreeBalls();
+            }
 
         }
 
@@ -33,6 +40,7 @@ public class LineCreator : MonoBehaviour {
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             activeLine.UpdateLine(mousePos);
+            
         }
 	}
 }

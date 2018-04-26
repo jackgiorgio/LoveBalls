@@ -715,8 +715,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 270529718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 386.5, y: 217.5, z: 0}
-  m_LocalScale: {x: 0.48333332, y: 0.48333332, z: 0.48333332}
+  m_LocalPosition: {x: 361, y: 203, z: 0}
+  m_LocalScale: {x: 0.45125, y: 0.45125, z: 0.45125}
   m_Children:
   - {fileID: 329199532}
   - {fileID: 1418366350}
@@ -872,7 +872,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 329199531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.099975586, y: 409.48755, z: 0}
+  m_LocalPosition: {x: -0.099975586, y: 409.36154, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 140893801}
@@ -1704,6 +1704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLevelPassed: 0
   isLose: 0
+  gameStarted: 0
 --- !u!4 &677856248
 Transform:
   m_ObjectHideFlags: 0
@@ -2633,6 +2634,7 @@ GameObject:
   - component: {fileID: 1715751671}
   - component: {fileID: 1715751670}
   - component: {fileID: 1715751669}
+  - component: {fileID: 1715751672}
   m_Layer: 0
   m_Name: PinkBall
   m_TagString: Female
@@ -2647,7 +2649,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1715751667}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.11, y: 0.08, z: 0}
+  m_LocalPosition: {x: 4, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 976631755}
@@ -2722,7 +2724,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e990beaccac59b24eaa01c33361964f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b76989a8b9104547a891a136a765be6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2732,6 +2734,20 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1715751672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1715751667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36a712b7dff17941be50fd09e9766b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleFace: {fileID: 21300000, guid: 4b76989a8b9104547a891a136a765be6, type: 3}
+  smilingFace: {fileID: 21300000, guid: 9a5b3c94ae8f69f4a9afc3b8ec33ff5b, type: 3}
+  cryFace: {fileID: 21300000, guid: 41b0e8ac488eb6541916390ef430fb74, type: 3}
 --- !u!1 &1833417110
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,7 +2774,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1833417110}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.69, y: 0.03, z: 0}
+  m_LocalPosition: {x: -4.9, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 976631755}
@@ -2833,7 +2849,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d0bfdd86c7c8ca940a7bf857c9547501, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10acb9f918237db42ad5f9872726d693, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2854,6 +2870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eeaea39e62f58841a5dedb37f5b53d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleFace: {fileID: 21300000, guid: 10acb9f918237db42ad5f9872726d693, type: 3}
+  smilingFace: {fileID: 21300000, guid: da439359f33f47d4a9d4f7d70aaf6c06, type: 3}
+  cryFace: {fileID: 21300000, guid: 0104ea9562981ae40894334fb56bf2f7, type: 3}
 --- !u!1 &2042753016
 GameObject:
   m_ObjectHideFlags: 0

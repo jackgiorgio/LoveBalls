@@ -43,7 +43,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     {
         int levelValue = PlayerPrefs.GetInt(LEVEL_KEY + level.ToString());
         bool isLevelUnblocked = (levelValue == 1);
-        if (level <= SceneManager.sceneCountInBuildSettings - 1)
+        if (level <= SceneManager.sceneCountInBuildSettings - 4)
         {
             return isLevelUnblocked;
         }
