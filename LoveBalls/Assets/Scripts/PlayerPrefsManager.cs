@@ -8,6 +8,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     const string MASTER_VOLUME_KEY = "master_volume";
     const string DIFFICULTY_KEY = "difficulty";
     const string LEVEL_KEY = "level_unlocked_";
+    const string SOUNDSEFECT = "soundeffect"; 
 
     public static void SetMasterVolume(float volume)
     {
@@ -68,6 +69,27 @@ public class PlayerPrefsManager : MonoBehaviour {
     public static float GetDifficulty()
     {
         return PlayerPrefs.GetFloat(DIFFICULTY_KEY);
+    }
+
+
+    public static void SwitchSoundEffect()
+    {
+        if (PlayerPrefs.GetInt(SOUNDSEFECT) == 1)
+        {
+            PlayerPrefs.SetInt(SOUNDSEFECT, 0);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(SOUNDSEFECT, 1);
+        }
+    }
+
+    public static bool IsSoundEffectOn()
+    {
+        bool isOn;
+        //1 for On and 0 for Off
+        isOn = PlayerPrefs.GetInt(SOUNDSEFECT) == 1;
+        return isOn;
     }
 
 }
