@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class LoseCollider : MonoBehaviour {
 
-    private LevelManager levelManager;
 
     private GameManager gameManager;
 
 
     void Start()
     {
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
