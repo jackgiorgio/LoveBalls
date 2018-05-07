@@ -244,6 +244,9 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 =======
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 --- !u!1 &284530121
@@ -495,9 +498,12 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &476582555
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!224 &466981344 stripped
 >>>>>>> cc7cbafebbdbdc888c768f7e1db9777082609ac6
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 =======
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 RectTransform:
@@ -614,6 +620,9 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 =======
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 --- !u!1 &575648329
@@ -1197,6 +1206,7 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1038248810
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 --- !u!1001 &591196183
@@ -2040,12 +2050,15 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379345026}
 --- !u!1001 &1412374066
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: 4827320455568796, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb, type: 2}
 =======
     - target: {fileID: 224482049855652618, guid: f8e56af524d580f4cb1a0ab22c067149,
@@ -2059,6 +2072,8 @@ Prefab:
 =======
     m_TransformParent: {fileID: 0}
     m_Modifications:
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
     - target: {fileID: 4206619774478278, guid: bfdcc8c1082152d4796e9d7ca30bf139, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2077,6 +2092,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4206619774478278, guid: bfdcc8c1082152d4796e9d7ca30bf139, type: 2}
       propertyPath: m_LocalRotation.y
+<<<<<<< HEAD
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
       value: 0
       objectReference: {fileID: 0}
@@ -2085,6 +2101,15 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4206619774478278, guid: bfdcc8c1082152d4796e9d7ca30bf139, type: 2}
+=======
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206619774478278, guid: bfdcc8c1082152d4796e9d7ca30bf139, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206619774478278, guid: bfdcc8c1082152d4796e9d7ca30bf139, type: 2}
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
@@ -2852,6 +2877,7 @@ Prefab:
       value: 0
       objectReference: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 224192100774892926, guid: f8e56af524d580f4cb1a0ab22c067149,
         type: 2}
 >>>>>>> cc7cbafebbdbdc888c768f7e1db9777082609ac6
@@ -2873,6 +2899,9 @@ Prefab:
 =======
     - target: {fileID: 4827320455568796, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb, type: 2}
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
+=======
+    - target: {fileID: 4827320455568796, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb, type: 2}
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -2884,6 +2913,7 @@ Prefab:
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_RemovedComponents: []
@@ -3332,6 +3362,11 @@ CanvasRenderer:
       propertyPath: m_LocalRotation.y
       value: 0
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
+=======
+    - target: {fileID: 4827320455568796, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
       objectReference: {fileID: 0}
     - target: {fileID: 4827320455568796, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb, type: 2}
       propertyPath: m_LocalRotation.z
@@ -3354,9 +3389,12 @@ CanvasRenderer:
   m_ParentPrefab: {fileID: 100100000, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb, type: 2}
   m_IsPrefabParent: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1025523849
 >>>>>>> cc7cbafebbdbdc888c768f7e1db9777082609ac6
 =======
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 --- !u!1 &1549241251
 GameObject:
   m_ObjectHideFlags: 0
@@ -3790,6 +3828,9 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1761261777}
 --- !u!1 &1769288125
+<<<<<<< HEAD
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
+=======
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,6 +3849,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!224 &1769288126
@@ -3834,6 +3876,10 @@ MonoBehaviour:
 --- !u!81 &1025523850
 AudioListener:
 >>>>>>> cc7cbafebbdbdc888c768f7e1db9777082609ac6
+=======
+--- !u!224 &1769288126
+RectTransform:
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 =======
 --- !u!224 &1769288126
 RectTransform:
@@ -3943,6 +3989,9 @@ MonoBehaviour:
   m_Enabled: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 =======
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
   m_EditorHideFlags: 0
@@ -3967,6 +4016,7 @@ MonoBehaviour:
   m_FillOrigin: 0
 --- !u!222 &1791113116
 CanvasRenderer:
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4023,6 +4073,8 @@ RectTransform:
 --- !u!4 &1025523853
 Transform:
 >>>>>>> cc7cbafebbdbdc888c768f7e1db9777082609ac6
+=======
+>>>>>>> parent of cc7cbaf... vervion1.4-shop-system
 =======
 >>>>>>> parent of cc7cbaf... vervion1.4-shop-system
   m_ObjectHideFlags: 0
