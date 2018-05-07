@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerPrefsManager : MonoBehaviour
-{
+public class PlayerPrefsManager : MonoBehaviour {
 
     const string MASTER_VOLUME_KEY = "master_volume";
     const string DIFFICULTY_KEY = "difficulty";
     const string LEVEL_KEY = "level_unlocked_";
-    const string SOUNDSEFECT = "soundeffect";
-    const string MONEY = "money";
-    const string PEN = "pen";
-    const string CURRERNTPEN = "using_pen_";
+    const string SOUNDSEFECT = "soundeffect"; 
 
     public static void SetMasterVolume(float volume)
     {
@@ -35,7 +31,7 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         if (level <= SceneManager.sceneCountInBuildSettings - 1)
         {
-            PlayerPrefs.SetInt(LEVEL_KEY + level.ToString(), 1);
+            PlayerPrefs.SetInt(LEVEL_KEY + level.ToString(),1);
         }
         else
         {
@@ -52,8 +48,7 @@ public class PlayerPrefsManager : MonoBehaviour
         {
             return isLevelUnblocked;
         }
-        else
-        {
+        else {
             Debug.LogError("trying of unblock level not in build order");
             return false;
         }
@@ -95,56 +90,6 @@ public class PlayerPrefsManager : MonoBehaviour
         //1 for On and 0 for Off
         isOn = PlayerPrefs.GetInt(SOUNDSEFECT) == 1;
         return isOn;
-    }
-
-    public static int GetMoney()
-    {
-        return PlayerPrefs.GetInt(MONEY);
-    }
-
-    public static void SetMoney(int money)
-    {
-        PlayerPrefs.SetInt(MONEY, money);
-    }
-
-    public static int IsPenUnblocked(int penOrder)
-    {
-        if (penOrder < 10)
-        { return PlayerPrefs.GetInt(PEN + "00" + penOrder.ToString()); }
-        if (penOrder >= 10 && penOrder < 100)
-        {
-            return PlayerPrefs.GetInt(PEN + "0" + penOrder.ToString());
-        }
-        else
-        {
-            return PlayerPrefs.GetInt(PEN + penOrder.ToString());
-        }
-    }
-
-    public static void UnblockPen(int penOrder)
-    {
-        if (penOrder < 10)
-        {
-            PlayerPrefs.SetInt(PEN + "00" + penOrder.ToString(), 1);
-            if (penOrder >= 10 && penOrder < 100)
-            {
-                PlayerPrefs.GetInt(PEN + "0" + penOrder.ToString(), 1);
-            }
-            else
-            {
-                PlayerPrefs.GetInt(PEN + penOrder.ToString(), 1);
-            }
-        }
-    }
-
-    public static string GetCurrentPen()
-    {
-        return PlayerPrefs.GetString(CURRERNTPEN);
-    }
-
-    public static void SetCurrentPen(int penIndex)
-    {
-        PlayerPrefs.SetString(CURRERNTPEN, "pen00" + penIndex.ToString());
     }
 
 }

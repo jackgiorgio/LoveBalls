@@ -6,7 +6,6 @@ using UnityEngine;
 public class Pen : ScriptableObject {
 
     public new string name;
-    public int index;
     public int price;
     public Sprite penSprite;
 }
