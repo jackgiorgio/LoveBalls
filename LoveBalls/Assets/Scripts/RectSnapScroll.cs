@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Image))]
-[RequireComponent(typeof(Mask))]
 [RequireComponent(typeof(ScrollRect))]
 public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -19,6 +18,8 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     [Tooltip("How fast will page lerp to target position")]
     public float decelerationRate = 10f;
 
+    public Button itemStateButton;
+
     // fast swipes should be fast and short. If too long, then it is not fast swipe
     private int _fastSwipeThresholdMaxLimit;
 
@@ -30,6 +31,7 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     // number of pages in container
     private int _pageCount;
     private int _currentPage;
+    private int childWidth;
 
     // whether lerping is in progress and target lerp position
     private bool _lerp;
@@ -46,8 +48,7 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     // for showing small page icons
     private bool _showPageSelection;
     private int _previousPageSelectionIndex;
-    // container with Image components - one Image for each page
-    private List<Image> _pageSelectionImages;
+
 
     //------------------------------------------------------------------------
     void Start()
@@ -95,22 +96,25 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         int offsetX = 0;
         int containerWidth = 0;
         int containerHeight = 0;
+        int paddingSpace;
 
             // screen width in pixels of scrollrect window
             width = (int)_scrollRectRect.rect.width;
+        paddingSpace = (int)_container.GetComponent<HorizontalOrVerticalLayoutGroup>().spacing;
             // center position of all pages
             offsetX = width/2;
-            // total width
-            containerWidth = width * _pageCount;
+        // total width
+        childWidth = (int)_container.GetChild(0).GetComponent<RectTransform>().rect.width;
+        containerWidth = (childWidth+paddingSpace) * _pageCount;
             // limit fast swipe length - beyond this length it is fast swipe no more
-            _fastSwipeThresholdMaxLimit = width;
+            _fastSwipeThresholdMaxLimit = childWidth;
 
 
         // set width of container
         Vector2 newSize = new Vector2(containerWidth, containerHeight);
         _container.sizeDelta = newSize;
-        Vector2 newPosition = new Vector2(containerWidth / 2, containerHeight / 2);
-        _container.anchoredPosition = newPosition;
+        Vector2 newPosition = new Vector2(0, 0);
+        _container.anchoredPosition = newPosition+ new Vector2(childWidth/2,0);
 
         // delete any previous settings
         _pagePositions.Clear();
@@ -120,7 +124,7 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         {
             RectTransform child = _container.GetChild(i).GetComponent<RectTransform>();
             Vector2 childPosition;
-            childPosition = new Vector2(i * width - containerWidth / 2 + offsetX, 0f);
+            childPosition = new Vector2((i+1) * childWidth + paddingSpace * i - childWidth / 2, 0f);
             child.anchoredPosition = childPosition;
             _pagePositions.Add(-childPosition);
         }
@@ -130,7 +134,7 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     private void SetPage(int aPageIndex)
     {
         aPageIndex = Mathf.Clamp(aPageIndex, 0, _pageCount - 1);
-        _container.anchoredPosition = _pagePositions[aPageIndex];
+        _container.anchoredPosition = _pagePositions[aPageIndex]+ new Vector2 (childWidth,0);
         _currentPage = aPageIndex;
     }
 
@@ -141,12 +145,16 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         _lerpTo = _pagePositions[aPageIndex];
         _lerp = true;
         _currentPage = aPageIndex;
+        FindPenAssetAndDisplayButtonUI(aPageIndex);
+
+
     }
 
 
     //------------------------------------------------------------------------
     private void NextScreen()
     {
+        Debug.Log("The Page Lerp to is " + (_currentPage+1).ToString());
         LerpToPage(_currentPage + 1);
     }
 
@@ -174,7 +182,6 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
                 nearestPage = i;
             }
         }
-
         return nearestPage;
     }
 
@@ -229,5 +236,14 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             // save current position of cointainer
             _startPosition = _container.anchoredPosition;
         }
+    }
+
+
+    void FindPenAssetAndDisplayButtonUI(int page)
+    {
+        Debug.Log("page is" + page.ToString());
+        ItemDisplay[] penItems = gameObject.GetComponentsInChildren<ItemDisplay>();
+        Pen pen = penItems[page].pen;
+        itemStateButton.GetComponent<ButtonState>().LoadButtonState(pen);
     }
 }
