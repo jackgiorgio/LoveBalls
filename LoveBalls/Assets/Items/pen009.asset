@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82886187546bc6542a19cfde167046d6, type: 3}
   m_Name: pen009
   m_EditorClassIdentifier: 
-  name: pen002
-  price: 615
+  name: pen009
+  index: 9
+  price: 795
   penSprite: {fileID: 21300000, guid: 5f75ad50fdd18b74e98c35fe8ea5907c, type: 3}
