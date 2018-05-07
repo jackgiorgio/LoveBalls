@@ -2167,9 +2167,15 @@ RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1135315123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -63.000008, y: -241.01001, z: 0}
+=======
+  m_GameObject: {fileID: 1549241251}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1343.85, y: -5, z: 0}
+>>>>>>> parent of 76fd9d7... false-version1.4
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1136421668}
@@ -2237,9 +2243,15 @@ RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1136421667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0000038146973, z: 0}
+=======
+  m_GameObject: {fileID: 1652002659}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1042.5499, y: -5, z: 0}
+>>>>>>> parent of 76fd9d7... false-version1.4
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1135315124}
@@ -4022,6 +4034,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1791113113}
+<<<<<<< HEAD
 --- !u!1 &2036784137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4081,6 +4094,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1791113113}
+=======
+>>>>>>> parent of 76fd9d7... false-version1.4
 --- !u!1 &2036784137
 GameObject:
   m_ObjectHideFlags: 0
