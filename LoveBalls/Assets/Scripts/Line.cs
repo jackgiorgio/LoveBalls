@@ -59,4 +59,20 @@ public class Line : MonoBehaviour {
         Vector2 centerPoint = new Vector2(totalx / points.Count, totaly / points.Count);
         return centerPoint;
     }
+
+    public float LineDistance()
+    {
+        float lineDistance = 0;
+        for (int i = 0; i < lineRenderer.positionCount; i++)
+        {
+           if (i > 1)
+           {
+                    Vector2 formerPos = lineRenderer.GetPosition(i - 1);
+                    Vector2 latterPos = lineRenderer.GetPosition(i);
+                    float distance = Vector2.Distance(formerPos, latterPos);
+                    lineDistance += distance;
+                }
+            }
+        return lineDistance;
+    }
 }

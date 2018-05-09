@@ -6,6 +6,7 @@ public class LineCreator : MonoBehaviour {
 
     public GameObject linePrefab;
     public GameObject lineParent;
+    public float lineDistance;
     Line activeLine;
 
     private GameManager gameManager;
@@ -22,12 +23,20 @@ public class LineCreator : MonoBehaviour {
         {
             GameObject lineGo = Instantiate(linePrefab);
             activeLine = lineGo.GetComponent<Line>();
+            
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            lineDistance = activeLine.LineDistance();
+            gameManager.TotalDistance = gameManager.previousDistance + lineDistance;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             GameObject lineP = Instantiate(lineParent,activeLine.NewCenterOfMass(),Quaternion.identity);
             activeLine.gameObject.transform.SetParent(lineP.transform);
+            gameManager.previousDistance = gameManager.TotalDistance;
             activeLine = null;
             if (gameManager.gameStarted == false)
             {

@@ -97,7 +97,6 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     private void SetPagePositions()
     {
         int width = 0;
-        int offsetX = 0;
         int containerWidth = 0;
         int containerHeight = 0;
         int paddingSpace;
@@ -106,7 +105,6 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
             width = (int)_scrollRectRect.rect.width;
         paddingSpace = (int)_container.GetComponent<HorizontalOrVerticalLayoutGroup>().spacing;
             // center position of all pages
-            offsetX = width/2;
         // total width
         childWidth = (int)_container.GetChild(0).GetComponent<RectTransform>().rect.width;
         containerWidth = (childWidth+paddingSpace) * _pageCount;

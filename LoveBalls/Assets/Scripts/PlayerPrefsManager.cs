@@ -17,6 +17,7 @@ public class PlayerPrefsManager : MonoBehaviour
     const string CURRERNTPEN = "using_pen";
     const string CURRERNTBALLSKIN = "using_ball_skin";
     const string CURRERNTBGSKIN = "using_bg_skin";
+    const string LEVELSTAR = "star_of_level_";
 
 
     public static void SetMasterVolume(float volume)
@@ -239,6 +240,19 @@ public class PlayerPrefsManager : MonoBehaviour
     public static void SetCurrentBGSkin(int bgSkinIndex)
     {
         PlayerPrefs.SetString(CURRERNTBGSKIN, "bgSkin00" + bgSkinIndex.ToString());
+    }
+
+    public static int GetLevelStar(int levelIndex)
+    {
+        return PlayerPrefs.GetInt(LEVELSTAR + levelIndex.ToString());
+    }
+
+    public static void SetUnblockStar(int levelIndex, int star)
+    {
+        if (star > PlayerPrefs.GetInt(LEVELSTAR + levelIndex.ToString()))
+        {
+            PlayerPrefs.SetInt(LEVELSTAR + levelIndex.ToString(), star);
+        }
     }
 
 

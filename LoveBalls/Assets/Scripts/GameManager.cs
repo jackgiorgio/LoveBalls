@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public LevelPreset levelPreset;
     public bool isLevelPassed = false;
     public bool isLose = false;
     public bool gameStarted = false;
@@ -12,6 +13,33 @@ public class GameManager : MonoBehaviour {
     private FemaleBall femaleBall;
     private GameObject winPanel;
     private ResultDisplay resultDisplay;
+    private int star;
+    public int Star
+    {
+        get
+        {
+            return star;
+        }
+        set
+        {
+            star = value;
+        }
+    }
+
+    public float previousDistance = 0;
+    private float totalDistance;
+
+    public float TotalDistance
+    {
+        get
+        {
+            return totalDistance;
+        }
+        set
+        {
+            totalDistance = value;
+        }
+    }
     
     // Use this for initialization
 	void Start () {
@@ -37,7 +65,8 @@ public class GameManager : MonoBehaviour {
             maleBall.ChangeFace(MaleBall.Face.smile);
             femaleBall.ChangeFace(FemaleBall.Face.smile);
             winPanel.SetActive(true); // display win panel, which will have a win animation and music play;
-            resultDisplay.DisplayWinPanel();
+            resultDisplay.DisplayWinPanel(levelPreset,totalDistance);
+            SetLevelStar();
             isLevelPassed = false;
             UnblockedLevelIfNeeded();
         }
@@ -83,5 +112,23 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void SetLevelStar()
+    {
+        int currentLevel = SceneManager.GetActiveScene().buildIndex - 4;
+        {
+            PlayerPrefsManager.SetUnblockStar(currentLevel, 3);
+            return;
+        }
+        if (totalDistance < levelPreset.twoStarsThreshold)
+        {
+            PlayerPrefsManager.SetUnblockStar(currentLevel, 2);
+            return;
+        }
+        else
+        {
+            PlayerPrefsManager.SetUnblockStar(currentLevel, 1);
+        }
+        
+    }
 
 }

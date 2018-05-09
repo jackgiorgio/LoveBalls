@@ -19,13 +19,26 @@ public class ResultDisplay : MonoBehaviour {
 
     }
 
-    public void DisplayWinPanel()
+    public void DisplayWinPanel(LevelPreset levelPreset, float distance)
     {
         //get screenshot of the gameplay;
         retryButton.SetActive(false);
         NextButton.SetActive(true);
         animator = GetComponent<Animator>();
-        animator.SetTrigger("3Stars");
+        if (distance < levelPreset.threeStarsThreshold)
+        {
+            animator.SetTrigger("3Stars");
+            return;
+        }
+        if (distance < levelPreset.twoStarsThreshold)
+        {
+            animator.SetTrigger("2Stars");
+            return;
+        }
+        else
+        {
+            animator.SetTrigger("1Star");
+        }
     }
 
     public void DisplayLosePanel()
@@ -33,4 +46,6 @@ public class ResultDisplay : MonoBehaviour {
         retryButton.SetActive(true);
         NextButton.SetActive(false);
     }
+
+
 }
