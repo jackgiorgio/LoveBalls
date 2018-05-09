@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerPrefsManager : MonoBehaviour {
+public class PlayerPrefsManager : MonoBehaviour
+{
 
     const string MASTER_VOLUME_KEY = "master_volume";
     const string DIFFICULTY_KEY = "difficulty";
     const string LEVEL_KEY = "level_unlocked_";
-    const string SOUNDSEFECT = "soundeffect"; 
+    const string SOUNDSEFECT = "soundeffect";
+    const string MONEY = "money";
+    const string PEN = "pen";
+    const string BALLS = "balls";
+    const string BGSKIN = "bgSkin";
+    const string CURRERNTPEN = "using_pen";
+    const string CURRERNTBALLSKIN = "using_ball_skin";
+    const string CURRERNTBGSKIN = "using_bg_skin";
+
 
     public static void SetMasterVolume(float volume)
     {
@@ -31,7 +40,7 @@ public class PlayerPrefsManager : MonoBehaviour {
     {
         if (level <= SceneManager.sceneCountInBuildSettings - 1)
         {
-            PlayerPrefs.SetInt(LEVEL_KEY + level.ToString(),1);
+            PlayerPrefs.SetInt(LEVEL_KEY + level.ToString(), 1);
         }
         else
         {
@@ -48,7 +57,8 @@ public class PlayerPrefsManager : MonoBehaviour {
         {
             return isLevelUnblocked;
         }
-        else {
+        else
+        {
             Debug.LogError("trying of unblock level not in build order");
             return false;
         }
@@ -91,5 +101,146 @@ public class PlayerPrefsManager : MonoBehaviour {
         isOn = PlayerPrefs.GetInt(SOUNDSEFECT) == 1;
         return isOn;
     }
+
+    public static int GetMoney()
+    {
+        return PlayerPrefs.GetInt(MONEY);
+    }
+
+    public static void SetMoney(int money)
+    {
+        PlayerPrefs.SetInt(MONEY, money);
+    }
+
+    public static int IsPenUnblocked(int penIndex)
+    {
+        if (penIndex < 10)
+        {
+            return PlayerPrefs.GetInt(PEN + "00" + penIndex.ToString());
+        }
+        if (penIndex >= 10 && penIndex < 100)
+        {
+            return PlayerPrefs.GetInt(PEN + "0" + penIndex.ToString());
+        }
+        else
+        {
+            return PlayerPrefs.GetInt(PEN + penIndex.ToString());
+        }
+    }
+
+    public static void UnblockPen(int penOrder)
+    {
+        if (penOrder < 10)
+        {
+            PlayerPrefs.SetInt(PEN + "00" + penOrder.ToString(), 1);
+            return;
+        }
+        if (penOrder >= 10 && penOrder < 100)
+        {
+            PlayerPrefs.GetInt(PEN + "0" + penOrder.ToString(), 1);
+        }
+        else
+        {
+            PlayerPrefs.GetInt(PEN + penOrder.ToString(), 1);
+        }
+    }
+
+    public static string GetCurrentPen()
+    {
+        return PlayerPrefs.GetString(CURRERNTPEN);
+    }
+
+    public static void SetCurrentPen(int penIndex)
+    {
+        PlayerPrefs.SetString(CURRERNTPEN, "pen00" + penIndex.ToString());
+    }
+
+    public static int IsBallSkinUnblocked(int ballSkinIndex)
+    {
+        if (ballSkinIndex < 10)
+        {
+            return PlayerPrefs.GetInt(BALLS + "00" + ballSkinIndex.ToString());
+        }
+        if (ballSkinIndex >= 10 && ballSkinIndex < 100)
+        {
+            return PlayerPrefs.GetInt(BALLS + "0" + ballSkinIndex.ToString());
+        }
+        else
+        {
+            return PlayerPrefs.GetInt(BALLS + ballSkinIndex.ToString());
+        }
+    }
+
+    public static void UnblockBallSkin(int ballsIndex)
+    {
+        if (ballsIndex < 10)
+        {
+            PlayerPrefs.SetInt(BALLS + "00" + ballsIndex.ToString(), 1);
+            return;
+        }
+        if (ballsIndex >= 10 && ballsIndex < 100)
+        {
+            PlayerPrefs.SetInt(BALLS + "0" + ballsIndex.ToString(), 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(BALLS + ballsIndex.ToString(), 1);
+        }
+    }
+
+    public static string GetCurrentBallSkin()
+    {
+        return PlayerPrefs.GetString(CURRERNTBALLSKIN);
+    }
+
+    public static void SetCurrentBallSkin(int ballSkinIndex)
+    {
+        PlayerPrefs.SetString(CURRERNTBALLSKIN, "balls00" + ballSkinIndex.ToString());
+    }
+
+    public static int IsBGSkinUnblocked(int bgSkinIndex)
+    {
+        if (bgSkinIndex < 10)
+        {
+            return PlayerPrefs.GetInt(BGSKIN+ "00" + bgSkinIndex.ToString());
+        }
+        if (bgSkinIndex >= 10 && bgSkinIndex < 100)
+        {
+            return PlayerPrefs.GetInt(BGSKIN + "0" + bgSkinIndex.ToString());
+        }
+        else
+        {
+            return PlayerPrefs.GetInt(BGSKIN + bgSkinIndex.ToString());
+        }
+    }
+
+    public static void UnblockBGSkin(int bgSkinIndex)
+    {
+        if (bgSkinIndex < 10)
+        {
+            PlayerPrefs.SetInt(BGSKIN + "00" + bgSkinIndex.ToString(), 1);
+            return;
+        }
+        if (bgSkinIndex >= 10 && bgSkinIndex < 100)
+        {
+            PlayerPrefs.SetInt(BGSKIN + "0" + bgSkinIndex.ToString(), 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(BGSKIN + bgSkinIndex.ToString(), 1);
+        }
+    }
+
+    public static string GetCurrentBGSkin()
+    {
+        return PlayerPrefs.GetString(CURRERNTBGSKIN);
+    }
+
+    public static void SetCurrentBGSkin(int bgSkinIndex)
+    {
+        PlayerPrefs.SetString(CURRERNTBGSKIN, "bgSkin00" + bgSkinIndex.ToString());
+    }
+
+
 
 }
