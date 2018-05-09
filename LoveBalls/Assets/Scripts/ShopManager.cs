@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour {
 
     public Text moneyText;
-    public ButtonState buttonState;
+    public Text shopTypeText;
+    public ButtonState penShop, ballsShop, bgSkinShop ;
 
     private int money = 0;
     public int Money
@@ -29,8 +30,7 @@ public class ShopManager : MonoBehaviour {
 
 
     void Start() {
-        HideShopManager();
-        Money = 2000;
+        Money = PlayerPrefsManager.GetMoney();
     }
 
     // Update is called once per frame
@@ -40,21 +40,21 @@ public class ShopManager : MonoBehaviour {
 
     public void BuyOrUsePen()
     {
-        Pen pen = buttonState.penAsset;
+        Pen pen = penShop.penAsset;
         if (PlayerPrefsManager.IsPenUnblocked(pen.index) == 0) //buy pen then
         {
             if (pen.price <= money)
             {
                 Money -= pen.price;
                 PlayerPrefsManager.UnblockPen(pen.index);
-                buttonState.LoadButtonState(pen);
+                penShop.LoadButtonState(pen);
             }
         }
 
         else if (PlayerPrefsManager.GetCurrentPen() != pen.name) //then use it;
         {
             PlayerPrefsManager.SetCurrentPen(pen.index);
-            buttonState.LoadButtonState(pen);
+            penShop.LoadButtonState(pen);
         }
 
     }
@@ -62,5 +62,52 @@ public class ShopManager : MonoBehaviour {
     void HideShopManager()
     {
         gameObject.SetActive(false);
+    }
+
+    public void BuyOrUseBallSkin()
+    {
+        BallSkin ballSkin= ballsShop.ballSkinAsset;
+        if (PlayerPrefsManager.IsBallSkinUnblocked(ballSkin.index) == 0) //buy ball then
+        {
+            if (ballSkin.price <= money)
+            {
+                Money -= ballSkin.price;
+                PlayerPrefsManager.UnblockBallSkin(ballSkin.index);
+                ballsShop.LoadButtonState(ballSkin);
+            }
+        }
+
+        else if (PlayerPrefsManager.GetCurrentBallSkin() != ballSkin.name) //then use it;
+        {
+            PlayerPrefsManager.SetCurrentBallSkin(ballSkin.index);
+            ballsShop.LoadButtonState(ballSkin);
+        }
+
+    }
+
+    public void BuyOrUseBGSkin()
+    {
+        BGSkin bgSkin = bgSkinShop.bgSkinAsset;
+        if (PlayerPrefsManager.IsBGSkinUnblocked(bgSkin.index) == 0) //buy ball then
+        {
+            if (bgSkin.price <= money)
+            {
+                Money -= bgSkin.price;
+                PlayerPrefsManager.UnblockBGSkin(bgSkin.index);
+                bgSkinShop.LoadButtonState(bgSkin);
+            }
+        }
+
+        else if (PlayerPrefsManager.GetCurrentBGSkin() != bgSkin.name) //then use it;
+        {
+            PlayerPrefsManager.SetCurrentBGSkin(bgSkin.index);
+            bgSkinShop.LoadButtonState(bgSkin);
+        }
+
+    }
+
+    public void ChangeShopTitle(string shopType)
+    {
+        shopTypeText.text = shopType;
     }
 }

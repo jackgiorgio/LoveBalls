@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Pen", menuName = "Pen")]
-public class Pen : ScriptableObject {
+[CreateAssetMenu(fileName = "New Pen", menuName = "Item/pen")]
+public class Pen : Item {
 
-    public new string name;
-    public int index;
-    public int price;
-    public Sprite penSprite;
 }

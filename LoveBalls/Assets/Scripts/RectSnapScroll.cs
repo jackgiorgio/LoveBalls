@@ -63,9 +63,13 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         // init
         SetPagePositions();
         SetPage(startingPage);
+        LerpToPage(0);
+
 
 
     }
+    
+
 
     //------------------------------------------------------------------------
     void Update()
@@ -145,7 +149,7 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         _lerpTo = _pagePositions[aPageIndex];
         _lerp = true;
         _currentPage = aPageIndex;
-        FindPenAssetAndDisplayButtonUI(aPageIndex);
+        IdentifyTypeOfDisplayAndDisplayUI(aPageIndex);
 
 
     }
@@ -154,7 +158,7 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
     //------------------------------------------------------------------------
     private void NextScreen()
     {
-        Debug.Log("The Page Lerp to is " + (_currentPage+1).ToString());
+        //Debug.Log("The Page Lerp to is " + (_currentPage+1).ToString());
         LerpToPage(_currentPage + 1);
     }
 
@@ -238,12 +242,30 @@ public class RectSnapScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         }
     }
 
-
-    void FindPenAssetAndDisplayButtonUI(int page)
+    void IdentifyTypeOfDisplayAndDisplayUI(int page)
     {
-        Debug.Log("page is" + page.ToString());
-        ItemDisplay[] penItems = gameObject.GetComponentsInChildren<ItemDisplay>();
-        Pen pen = penItems[page].pen;
-        itemStateButton.GetComponent<ButtonState>().LoadButtonState(pen);
+        PenDisplay[] penItems = gameObject.GetComponentsInChildren<PenDisplay>();
+        if (penItems.Length != 0)
+        {
+            Pen pen = penItems[page].pen;
+            itemStateButton.GetComponent<ButtonState>().LoadButtonState(pen);
+            return;
+        }
+        BallsDisplay[] ballsItem = gameObject.GetComponentsInChildren<BallsDisplay>();
+        if (ballsItem.Length != 0)
+        {
+            BallSkin ballskin = ballsItem[page].ballskin;
+            itemStateButton.GetComponent<ButtonState>().LoadButtonState(ballskin);
+            return;
+        }
+        BGSkinDisplay[] bgSkins = gameObject.GetComponentsInChildren<BGSkinDisplay>();
+        if (bgSkins.Length != 0)
+        {
+            BGSkin bgSkin= bgSkins[page].bgSkin;
+            itemStateButton.GetComponent<ButtonState>().LoadButtonState(bgSkin);
+            return;
+        }
+
+
     }
 }
