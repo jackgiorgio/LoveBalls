@@ -61,6 +61,12 @@ public class MaleBall : MonoBehaviour {
     public enum Face { idle,smile,cry};
 
 
+    public void SetSkin()
+    {
+
+    }
+
+
 
 
 }

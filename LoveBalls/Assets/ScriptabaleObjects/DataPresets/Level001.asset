@@ -14,4 +14,4 @@ MonoBehaviour:
   oneStarThreshold: 0
   twoStarThreshold: 0.4
   threeStarsThreshold: 0.72
-  levelLength: 10
+  levelLength: 8

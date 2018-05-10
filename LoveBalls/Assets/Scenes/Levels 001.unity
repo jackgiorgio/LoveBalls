@@ -598,7 +598,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 68
+    m_FontSize: 56
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -897,8 +897,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 270529718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 449, y: 252.5, z: 0}
-  m_LocalScale: {x: 0.56125, y: 0.56125, z: 0.56125}
+  m_LocalPosition: {x: 532.5, y: 305.5, z: 0}
+  m_LocalScale: {x: 0.6788889, y: 0.6788889, z: 0.6788889}
   m_Children:
   - {fileID: 329199532}
   - {fileID: 1418366350}
@@ -1054,7 +1054,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 329199531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.099975586, y: 409.38626, z: 0}
+  m_LocalPosition: {x: -0.099975586, y: 409.48752, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 140893801}
@@ -2130,8 +2130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a15e14e91c196d47adab1e8116bcb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durantion: 3
-  disappearOffset: {x: 0, y: 20, z: 0}
+  durantion: 2
+  disappearOffset: {x: 0, y: 10, z: 0}
 --- !u!114 &652857513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,8 +2245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a15e14e91c196d47adab1e8116bcb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durantion: 3
-  disappearOffset: {x: 0, y: 20, z: 0}
+  durantion: 2
+  disappearOffset: {x: 0, y: 10, z: 0}
 --- !u!1 &677856246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,8 +2421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a15e14e91c196d47adab1e8116bcb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durantion: 3
-  disappearOffset: {x: 0, y: 20, z: 0}
+  durantion: 2
+  disappearOffset: {x: 0, y: 10, z: 0}
 --- !u!114 &871411112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,7 +3012,6 @@ GameObject:
   - component: {fileID: 1224096398}
   - component: {fileID: 1224096401}
   - component: {fileID: 1224096400}
-  - component: {fileID: 1224096399}
   m_Layer: 5
   m_Name: StarRatingDisplay
   m_TagString: Untagged
@@ -3044,22 +3043,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.07821636, y: 0.05700595}
   m_SizeDelta: {x: 533.1, y: 60.1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1224096399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1224096397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed4f1343e7755034d9ddded3a43011d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  star1: {fileID: 677344708}
-  star2: {fileID: 652857512}
-  star3: {fileID: 871411111}
-  bar: {fileID: 591687465}
-  percentageText: {fileID: 0}
 --- !u!114 &1224096400
 MonoBehaviour:
   m_ObjectHideFlags: 0

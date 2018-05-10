@@ -123,11 +123,12 @@ public class GameManager : MonoBehaviour {
     void SetLevelStar()
     {
         int currentLevel = SceneManager.GetActiveScene().buildIndex - 4;
+        if (CountPercentage() > levelPreset.twoStarThreshold)
         {
             PlayerPrefsManager.SetUnblockStar(currentLevel, 3);
             return;
         }
-        if (totalDistance < levelPreset.twoStarThreshold)
+        if (CountPercentage() > levelPreset.twoStarThreshold)
         {
             PlayerPrefsManager.SetUnblockStar(currentLevel, 2);
             return;
