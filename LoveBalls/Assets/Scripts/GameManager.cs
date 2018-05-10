@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour {
     public bool isLevelPassed = false;
     public bool isLose = false;
     public bool gameStarted = false;
+    public StarDisapper star1, star2, star3;
+    public Percentage bar;
+    public PercentageText percentageText;
+
+
+
     private MaleBall maleBall;
     private FemaleBall femaleBall;
     private GameObject winPanel;
@@ -25,7 +31,7 @@ public class GameManager : MonoBehaviour {
             star = value;
         }
     }
-
+    
     public float previousDistance = 0;
     private float totalDistance;
 
@@ -38,6 +44,7 @@ public class GameManager : MonoBehaviour {
         set
         {
             totalDistance = value;
+            CountPercentageAndDisplayUI();
         }
     }
     
@@ -49,6 +56,7 @@ public class GameManager : MonoBehaviour {
         femaleBall = GameObject.FindObjectOfType<FemaleBall>();
         femaleBall.transform.GetComponent<Rigidbody2D>().isKinematic = true;
         winPanel.SetActive(false);
+        CountPercentageAndDisplayUI();
     }
 	
 	// Update is called once per frame
@@ -65,7 +73,7 @@ public class GameManager : MonoBehaviour {
             maleBall.ChangeFace(MaleBall.Face.smile);
             femaleBall.ChangeFace(FemaleBall.Face.smile);
             winPanel.SetActive(true); // display win panel, which will have a win animation and music play;
-            resultDisplay.DisplayWinPanel(levelPreset,totalDistance);
+            resultDisplay.DisplayWinPanel(levelPreset,CountPercentage());
             SetLevelStar();
             isLevelPassed = false;
             UnblockedLevelIfNeeded();
@@ -119,7 +127,7 @@ public class GameManager : MonoBehaviour {
             PlayerPrefsManager.SetUnblockStar(currentLevel, 3);
             return;
         }
-        if (totalDistance < levelPreset.twoStarsThreshold)
+        if (totalDistance < levelPreset.twoStarThreshold)
         {
             PlayerPrefsManager.SetUnblockStar(currentLevel, 2);
             return;
@@ -129,6 +137,32 @@ public class GameManager : MonoBehaviour {
             PlayerPrefsManager.SetUnblockStar(currentLevel, 1);
         }
         
+    }
+
+
+    private float CountPercentage()
+    {
+        float restLength = levelPreset.levelLength - totalDistance;
+        if (restLength <= 0)
+        {
+            return 0f;
+        }
+        return (levelPreset.levelLength - totalDistance) / levelPreset.levelLength;
+    }
+
+    void CountPercentageAndDisplayUI()
+    {
+        float percentage = CountPercentage();
+        percentageText.ShowPercentage(percentage);
+        bar.FillWithPersentage(percentage);
+        if (percentage < levelPreset.threeStarsThreshold)
+        {
+            star3.Disapplear();
+        }
+        if (percentage < levelPreset.twoStarThreshold)
+        {
+            star2.Disapplear();
+        }
     }
 
 }

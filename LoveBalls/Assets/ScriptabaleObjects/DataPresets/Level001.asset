@@ -11,5 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33c31d589a5c10f4d9e7742b2577eb4c, type: 3}
   m_Name: Level001
   m_EditorClassIdentifier: 
-  twoStarsThreshold: 5
-  threeStarsThreshold: 3
+  oneStarThreshold: 0
+  twoStarThreshold: 0.4
+  threeStarsThreshold: 0.72
+  levelLength: 10

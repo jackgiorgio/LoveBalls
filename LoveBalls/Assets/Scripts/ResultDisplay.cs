@@ -19,18 +19,18 @@ public class ResultDisplay : MonoBehaviour {
 
     }
 
-    public void DisplayWinPanel(LevelPreset levelPreset, float distance)
+    public void DisplayWinPanel(LevelPreset levelPreset, float percentage)
     {
         //get screenshot of the gameplay;
         retryButton.SetActive(false);
         NextButton.SetActive(true);
         animator = GetComponent<Animator>();
-        if (distance < levelPreset.threeStarsThreshold)
+        if (percentage > levelPreset.threeStarsThreshold)
         {
             animator.SetTrigger("3Stars");
             return;
         }
-        if (distance < levelPreset.twoStarsThreshold)
+        if (percentage > levelPreset.twoStarThreshold)
         {
             animator.SetTrigger("2Stars");
             return;
