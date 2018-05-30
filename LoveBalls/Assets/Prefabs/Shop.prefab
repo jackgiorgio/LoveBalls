@@ -1301,6 +1301,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114657194692184980, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb,
+          type: 2}
+        m_MethodName: PlayClipEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114032293490030146
@@ -2951,6 +2963,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114657194692184980, guid: 22ad7eeb59d9c474daf5dac87ae4dfeb,
+          type: 2}
+        m_MethodName: PlayClipEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114657711500344968
@@ -4372,7 +4396,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1406.7686, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224135542051048636
 RectTransform:
@@ -4390,7 +4414,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2007.3687, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224192100774892926
 RectTransform:
@@ -4472,7 +4496,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -395.03146, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224217161678866098
 RectTransform:
@@ -4490,7 +4514,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1707.0686, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224236490088891670
 RectTransform:
@@ -4508,7 +4532,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -94.731445, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224251307437728060
 RectTransform:
@@ -4940,7 +4964,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 205.5686, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224597812896209038
 RectTransform:
@@ -5235,7 +5259,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1106.4685, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224900269932095736
 RectTransform:
@@ -5289,7 +5313,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 505.8684, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224936265724167672
 RectTransform:
@@ -5325,7 +5349,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 806.16846, y: 0}
-  m_SizeDelta: {x: 278, y: 420.5}
+  m_SizeDelta: {x: 278, y: 325.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224999580474616046
 RectTransform:

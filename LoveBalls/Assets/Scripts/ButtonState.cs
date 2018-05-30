@@ -98,7 +98,7 @@ public class ButtonState : MonoBehaviour {
     {
         if (PlayerPrefsManager.IsBGSkinUnblocked(bgSkin.index) == 1)
         {
-            if (PlayerPrefsManager.GetCurrentBGSkin() == bgSkin.name)
+            if (PlayerPrefsManager.GetCurrentBGSkin() == bgSkin.index)
             {
                 stateText.text = "Using";
                 coin.SetActive(false);

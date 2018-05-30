@@ -7,17 +7,13 @@ public class SettingPanel : MonoBehaviour {
 
     public Sprite musicOn, musicOff, voiceOn, voiceOff, vibrationOn, vibrationOff;
     public GameObject musicButton, voiceButton, vibrationButton;
-    private AudioSource audioSource;
+    private MusicPlayer musicPlayer;
     
 
     
     // Use this for initialization
 	void Start () {
-        if (GameObject.FindObjectOfType<AudioSource>())
-        {
-            audioSource = GameObject.FindObjectOfType<AudioSource>();
-            Debug.Log("found audiosource!");
-        }
+        musicPlayer = MusicPlayer.instance;
         LoadMusicMode();
         LoadVoiceMode();
 	}
@@ -29,33 +25,35 @@ public class SettingPanel : MonoBehaviour {
 
     public void SwitchMusicMode()
     {
-        if (audioSource)
+        if (musicPlayer)
         {
-            if (audioSource.mute == false)
+            if (musicPlayer.isMute == true) //如果当前是静音，则打开声音
             {
-                audioSource.mute = true;
-                musicButton.GetComponent<Image>().sprite = musicOff;
+                musicPlayer.UnMute("Start");
+                musicPlayer.UnMute("Background");
+                musicButton.GetComponent<Image>().sprite = musicOn;
+                musicPlayer.isMute = false;
             }
             else
             {
-                audioSource.mute = false;
-                musicButton.GetComponent<Image>().sprite = musicOn;
+                musicPlayer.SetMute("Start");
+                musicPlayer.SetMute("Background");
+                musicButton.GetComponent<Image>().sprite = musicOff;
+                musicPlayer.isMute = true;
             }
         }
     }
 
     public void LoadMusicMode()
     {
-        if (audioSource)
+        if (musicPlayer)
         {
-            if (audioSource.mute == false)
+            if (musicPlayer.isMute == false) //如果当前是静音，则打开声音
             {
-                audioSource.mute = false;
                 musicButton.GetComponent<Image>().sprite = musicOn;
             }
             else
             {
-                audioSource.mute = true;
                 musicButton.GetComponent<Image>().sprite = musicOff;
             }
         }

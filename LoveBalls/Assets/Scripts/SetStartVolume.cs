@@ -12,7 +12,7 @@ public class SetStartVolume : MonoBehaviour {
         if (musicPlayer)
         {
             float volume = PlayerPrefsManager.GetMasterVolume();
-            musicPlayer.SetVolume(volume);
+            //musicPlayer.SetVolume(volume);
         }
 	}
 	

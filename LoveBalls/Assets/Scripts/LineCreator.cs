@@ -21,6 +21,7 @@ public class LineCreator : MonoBehaviour {
 	void Update () {
         if (Input.GetMouseButtonDown(0))
         {
+            gameManager.CaptureDefaultScreenShot();
             GameObject lineGo = Instantiate(linePrefab);
             activeLine = lineGo.GetComponent<Line>();
 
@@ -54,5 +55,9 @@ public class LineCreator : MonoBehaviour {
         }
 	}
 
+    public void Disable()
+    {
+        Destroy(gameObject);
+    }
 
 }

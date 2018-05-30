@@ -7,6 +7,5 @@ public class LevelPreset : ScriptableObject {
 
     public float oneStarThreshold, twoStarThreshold,threeStarsThreshold;
     public float levelLength;
-
 	
 }

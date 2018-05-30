@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour {
 
     public void LoadLevel(string name)
     {
+
+        MusicPlayer.instance.PlaySoundEffect("Clip");
         Debug.Log("New Level load: " + name);
         SceneManager.LoadScene(name);
     }
@@ -30,12 +32,18 @@ public class LevelManager : MonoBehaviour {
 
     public void LoadNextLevel()
     {
+        PlayClipEffect();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ReloadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PlayClipEffect()
+    {
+        MusicPlayer.instance.PlaySoundEffect("Clip");
     }
 
 }

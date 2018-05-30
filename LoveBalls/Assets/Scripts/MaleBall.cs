@@ -14,7 +14,7 @@ public class MaleBall : MonoBehaviour {
 
     private GameManager gameManager;
 
-    private bool triggerWinCondition;
+    private bool triggerWinCondition = false;
 
 	void Start () {
         female = GameObject.FindGameObjectWithTag("Female");
@@ -24,10 +24,11 @@ public class MaleBall : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "Female")
+        if (collision.transform.tag == "Female" & triggerWinCondition ==false)
         {
             gameManager.isLevelPassed = true;
             ResetToKinematic();
+            triggerWinCondition = true;
         }
     }
 

@@ -13,9 +13,9 @@ public class LoseCollider : MonoBehaviour {
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.transform.tag == "Female" || collision.transform.tag == "Male")
+        if (collider.transform.tag == "Female" || collider.transform.tag == "Male")
         {
             gameManager.isLose = true;
         }

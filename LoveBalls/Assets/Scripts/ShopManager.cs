@@ -98,7 +98,7 @@ public class ShopManager : MonoBehaviour {
             }
         }
 
-        else if (PlayerPrefsManager.GetCurrentBGSkin() != bgSkin.name) //then use it;
+        else if (PlayerPrefsManager.GetCurrentBGSkin() != bgSkin.index) //then use it;
         {
             PlayerPrefsManager.SetCurrentBGSkin(bgSkin.index);
             bgSkinShop.LoadButtonState(bgSkin);

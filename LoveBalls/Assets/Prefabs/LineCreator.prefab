@@ -54,13 +54,3 @@ MonoBehaviour:
   linePrefab: {fileID: 1537417113172538, guid: fae1e5daa1f3d2249965a49b54ed883e, type: 2}
   lineParent: {fileID: 1325356192038652, guid: e01af864561243f48bec4c260f55c325, type: 2}
   lineDistance: 0
-  colorPresets:
-  - {fileID: 11400000, guid: cb340a61495fcca4faf2309e80176863, type: 2}
-  - {fileID: 11400000, guid: ad919cf56794fba4498d3c93a313c43f, type: 2}
-  - {fileID: 11400000, guid: 8e036fb6c5b530945b41af1c64fd5795, type: 2}
-  - {fileID: 11400000, guid: c137951d12286f444a2377342388dc66, type: 2}
-  - {fileID: 11400000, guid: d2ceeceb74dc2e540b527c92898279c6, type: 2}
-  - {fileID: 11400000, guid: 27b32c44c58bb0447837403c41dfc08d, type: 2}
-  - {fileID: 11400000, guid: e7113ff0213808b4584e82de6213d8b7, type: 2}
-  - {fileID: 11400000, guid: 644eed08ebe31c94bb4d990f1cbab189, type: 2}
-  - {fileID: 11400000, guid: 3e07df5299eb5c541b09b2333d5533d6, type: 2}

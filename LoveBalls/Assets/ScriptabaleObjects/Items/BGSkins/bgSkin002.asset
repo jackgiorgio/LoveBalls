@@ -14,4 +14,4 @@ MonoBehaviour:
   name: bgSkin002
   index: 2
   price: 345
-  sprite: {fileID: 21300000, guid: 6cee8713a80fa1f49a7f0a32bcead54c, type: 3}
+  sprite: {fileID: 21300000, guid: 6944a71c3eafbb542a7d68532101cc9f, type: 3}

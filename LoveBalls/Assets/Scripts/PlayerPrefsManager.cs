@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPrefsManager : MonoBehaviour
 {
+    const int levelAmount = 132;
+    const int skinAmount = 9;
 
     const string MASTER_VOLUME_KEY = "master_volume";
     const string DIFFICULTY_KEY = "difficulty";
@@ -18,6 +20,18 @@ public class PlayerPrefsManager : MonoBehaviour
     const string CURRERNTBALLSKIN = "using_ball_skin";
     const string CURRERNTBGSKIN = "using_bg_skin";
     const string LEVELSTAR = "star_of_level_";
+    const string CURRENTBGMUSIC = "current_background_music";
+    const string TOTALSTAR = "totalStar";
+    const string TOTALLEVEL = "totalLevel";
+
+
+    private void Start()
+    {
+        PlayerPrefs.SetInt(TOTALLEVEL, levelAmount);
+        ResetPlayerPref();
+        UpdateUnblockedLevels();
+        ResetSkins();
+    }
 
 
     public static void SetMasterVolume(float volume)
@@ -54,15 +68,7 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         int levelValue = PlayerPrefs.GetInt(LEVEL_KEY + level.ToString());
         bool isLevelUnblocked = (levelValue == 1);
-        if (level <= SceneManager.sceneCountInBuildSettings - 4)
-        {
-            return isLevelUnblocked;
-        }
-        else
-        {
-            Debug.LogError("trying of unblock level not in build order");
-            return false;
-        }
+        return isLevelUnblocked;
     }
 
     public static void SetDifficulty(float difficulty)
@@ -203,7 +209,7 @@ public class PlayerPrefsManager : MonoBehaviour
     {
         if (bgSkinIndex < 10)
         {
-            return PlayerPrefs.GetInt(BGSKIN+ "00" + bgSkinIndex.ToString());
+            return PlayerPrefs.GetInt(BGSKIN + "00" + bgSkinIndex.ToString());
         }
         if (bgSkinIndex >= 10 && bgSkinIndex < 100)
         {
@@ -232,14 +238,14 @@ public class PlayerPrefsManager : MonoBehaviour
         }
     }
 
-    public static string GetCurrentBGSkin()
+    public static int GetCurrentBGSkin()
     {
-        return PlayerPrefs.GetString(CURRERNTBGSKIN);
+        return PlayerPrefs.GetInt(CURRERNTBGSKIN);
     }
 
     public static void SetCurrentBGSkin(int bgSkinIndex)
     {
-        PlayerPrefs.SetString(CURRERNTBGSKIN, "bgSkin00" + bgSkinIndex.ToString());
+        PlayerPrefs.SetInt(CURRERNTBGSKIN, bgSkinIndex);
     }
 
     public static int GetLevelStar(int levelIndex)
@@ -255,6 +261,162 @@ public class PlayerPrefsManager : MonoBehaviour
         }
     }
 
+    public static void SetCurrentBGMusic(string musicName)
+    {
+        PlayerPrefs.SetString(CURRENTBGMUSIC,musicName);
+    }
+
+    public static string GetCurrentBGMusic()
+    {
+        return PlayerPrefs.GetString(CURRENTBGMUSIC);
+    }
+
+    public static int GetTotalLevel()
+    {
+        return PlayerPrefs.GetInt(TOTALLEVEL);
+    }
+
+
+
+    public void ResetPlayerPref()
+    {
+        if (!PlayerPrefs.HasKey(CURRERNTPEN))
+        {
+            PlayerPrefs.SetInt(CURRERNTPEN, 1);
+        }
+        if (!PlayerPrefs.HasKey(CURRERNTBGSKIN))
+        {
+            PlayerPrefs.SetInt(CURRERNTBGSKIN, 1);
+        }
+        if (!PlayerPrefs.HasKey(CURRERNTBALLSKIN))
+        {
+            PlayerPrefs.SetInt(CURRERNTBALLSKIN, 1);
+        }
+        if (!PlayerPrefs.HasKey(CURRERNTBALLSKIN))
+        {
+            PlayerPrefs.SetInt(CURRERNTBALLSKIN, 1);
+        }
+        LoadLevelsData(levelAmount);
+        SetTotalStars();
+        if (!PlayerPrefs.HasKey(MONEY))
+        {
+            PlayerPrefs.SetInt(MONEY, 800);
+        }
+
+
+    }
+
+    void LoadLevelsData(int totalLevel)    //
+    {
+        for (int i = 0; i < totalLevel; i++)
+        {
+            string levelStar = LEVELSTAR + (i+1).ToString();
+            if (!PlayerPrefs.HasKey(levelStar))
+            {
+                    PlayerPrefs.SetInt(levelStar, 0);
+            }
+        }
+
+        for (int i = 0; i < totalLevel; i++)
+        {
+            string level_key = LEVEL_KEY + (i + 1).ToString();
+            if (!PlayerPrefs.HasKey(level_key))
+            {
+                if (i == 0)
+                {
+                    PlayerPrefs.SetInt(level_key, 1);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt(level_key, 0);
+                }
+            }
+        }
+    }
+
+    public static int GetTotalStar()
+    {
+        return PlayerPrefs.GetInt(TOTALSTAR);
+    }
+
+
+    public static void SetTotalStars()
+    {
+        int totalStar = 0;
+        for (int i = 1; i < PlayerPrefsManager.GetTotalLevel()+1; i++)
+        {
+            totalStar += PlayerPrefsManager.GetLevelStar(i);
+        }
+        PlayerPrefs.SetInt(TOTALSTAR, totalStar);
+        Debug.Log(totalStar.ToString() + " stars in total");
+    }
+
+    public static void UpdateUnblockedLevels()
+    {
+        int totalLevel = PlayerPrefsManager.GetTotalLevel();
+        int totalStar = PlayerPrefsManager.GetTotalStar();
+        for (int i = 1; i < totalLevel+1; i++)
+        {
+            if (i<25)
+            {
+                PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 1);
+            }
+            else if (i>=25)
+            {
+                if (totalStar >= (10 + 30 * (i / 12 - 1)))
+                {
+                    PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 1);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt(LEVEL_KEY + i.ToString(), 0);
+                }
+            }
+        } 
+    }
+
+    void ResetSkins()
+    {
+        for (int i = 1; i < skinAmount+1; i++)
+        {
+            if (i == 1)
+            {
+                PlayerPrefs.SetInt(PEN + "00" + i.ToString(), 1);
+
+            }
+            else if (!PlayerPrefs.HasKey(PEN+"00"+i.ToString()))
+            {
+                PlayerPrefs.SetInt(PEN + "00" + i.ToString(), 0);
+            }
+        }
+
+        for (int i = 1; i < skinAmount + 1; i++)
+        {
+            if (i == 1)
+            {
+                PlayerPrefs.SetInt(BGSKIN + "00" + i.ToString(), 1);
+
+            }
+            else if (!PlayerPrefs.HasKey(BGSKIN + "00" + i.ToString()))
+            {
+                PlayerPrefs.SetInt(BGSKIN + "00" + i.ToString(), 0);
+            }
+        }
+
+        for (int i = 1; i < skinAmount + 1; i++)
+        {
+            if (i == 1)
+            {
+                PlayerPrefs.SetInt(BALLS + "00" + i.ToString(), 1);
+
+            }
+            else if (!PlayerPrefs.HasKey(BALLS + "00" + i.ToString()))
+            {
+                PlayerPrefs.SetInt(BALLS + "00" + i.ToString(), 0);
+            }
+        }
+
+    }
 
 
 }

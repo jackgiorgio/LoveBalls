@@ -1,40 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+//using UnityEditor;
 
 public class MusicPlayer : MonoBehaviour
 {
-    static MusicPlayer instance = null;
+    public Sound[] sounds;
+
+    public static MusicPlayer instance;
+    public bool isMute;
 
 
-    public AudioClip[] levelMusicChangeArray;
-    private AudioSource music;
-    //singleton
+    //public AudioClip[] levelMusicChangeArray;
+    //private AudioSource music;
 
-    void Awake()
+
+    void Awake()  //singleton
     {
-        if (instance != null && instance != this)
+        if (instance == null)
         {
-            Destroy(gameObject);
-
-            print("Duplicate music player self-destructing!");
+            instance = this;
         }
         else
         {
-            instance = this;
-            GameObject.DontDestroyOnLoad(gameObject);
-            music = GetComponent<AudioSource>();
-            music.clip = levelMusicChangeArray[0];
-            music.loop = false;
-            music.Play();
+            Destroy(gameObject);
+            return;
         }
+
+        DontDestroyOnLoad(gameObject);
+
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+        }
+
     }
 
-    void Start()
+    private void Start()
     {
-        music.volume = PlayerPrefsManager.GetMasterVolume();
+        StartPlayingMusic();
     }
+
 
     void OnEnable()
     {
@@ -49,26 +62,106 @@ public class MusicPlayer : MonoBehaviour
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         int level = SceneManager.GetActiveScene().buildIndex;
-        AudioClip thisLevelMusic = levelMusicChangeArray[level];
-        if (thisLevelMusic)
+        if (level == 1)
         {
-            music.clip = thisLevelMusic;
-            if (level == 0)
+            Play("Start");
+            Stop("Background");
+            PlayerPrefsManager.SetCurrentBGMusic("Start");
+        }
+        if (level > 1)
+        {
+            if (PlayerPrefsManager.GetCurrentBGMusic() != "Background")
             {
-                music.loop = true;
+                Play("Background");
+                PlayerPrefsManager.SetCurrentBGMusic("Background");
             }
-            else
+        }
+
+    }
+
+    //public void SetVolume(float volume)
+    //{
+    //    music.volume = volume;
+    //}
+
+    public void Play(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Play();
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.Stop();
+    }
+
+    public void SetMute(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.mute = true;
+    }
+
+    public void UnMute(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.source.mute = false;
+    }
+
+    public void PlaySoundEffect(string name)
+    {
+        if (PlayerPrefsManager.IsSoundEffectOn())
+        {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            if (s == null)
             {
-                music.loop = false;
+                Debug.LogWarning("Sound: " + name + " not found!");
+                return;
             }
-            music.Play();
+            s.source.Play();
         }
     }
 
-    public void SetVolume(float volume)
+    void StartPlayingMusic()
     {
-        music.volume = volume;
+        int level = SceneManager.GetActiveScene().buildIndex;
+        if (level == 1)
+        {
+            Play("Start");
+            Stop("Background");
+            PlayerPrefsManager.SetCurrentBGMusic("Start");
+        }
+        if (level > 1)
+        {
+            if (PlayerPrefsManager.GetCurrentBGMusic() != "Background")
+            {
+                Play("Background");
+                PlayerPrefsManager.SetCurrentBGMusic("Background");
+            }
+        }
     }
+
+
 
 
 
